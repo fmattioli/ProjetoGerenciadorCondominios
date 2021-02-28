@@ -63,7 +63,7 @@ namespace GerenciadorCondominios.DAL.Repositorios
             }
         }
 
-        public async Task DeslogarUsuario(Usuario usuario, bool lembrar)
+        public async Task DeslogarUsuario()
         {
             try
             {
