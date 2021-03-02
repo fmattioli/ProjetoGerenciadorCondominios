@@ -25,9 +25,9 @@ namespace GerenciadorCondominios.Controllers
             this._webHostEnvironment = webHostEnvironment;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _usuarioRepositorio.PegarTodos());
         }
 
         [HttpGet]
