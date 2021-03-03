@@ -71,8 +71,8 @@
                                 </td>
 
                                 <td class="@item.Id">
-                                    <a class="btn-floating blue darken-4 btnAprovar tooltip" onclick="AprovarUsuarios('@item.Id', '@item.UserName')" data-position="right" data-tooltip="Aprovar usuário"><i class="material-icons">thumb_up</i></a>
-                                    <a class="btn-floating red darken-4 btnReprovar tooltip" onclick="ReprovarUsuarios('@item.Id', '@item.UserName')" data-position="right" data-tooltip="Reprovar usuário"><i class="material-icons">thumb_down</i></a>
+                                    <a class="btn-floating blue darken-4 btnAprovar tooltip" onclick="AprovarUsuario('@item.Id', '@item.UserName')" data-position="right" data-tooltip="Aprovar usuário"><i class="material-icons">thumb_up</i></a>
+                                    <a class="btn-floating red darken-4 btnReprovar tooltip" onclick="ReprovarUsuario('@item.Id', '@item.UserName')" data-position="right" data-tooltip="Reprovar usuário"><i class="material-icons">thumb_down</i></a>
 
                                 </td>
 
@@ -101,3 +101,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/OperacoesUsuario.js"></script>
+}

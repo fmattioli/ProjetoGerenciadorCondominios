@@ -16,12 +16,14 @@ namespace GerenciadorCondominios.Controllers
     public class UsuariosController : Controller
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly IFuncaoRepositorio _funcaoRepositorio;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
 
-        public UsuariosController(IUsuarioRepositorio usuarioRepositorio, IWebHostEnvironment webHostEnvironment)
+        public UsuariosController(IUsuarioRepositorio usuarioRepositorio, IFuncaoRepositorio funcaoRepositorio, IWebHostEnvironment webHostEnvironment)
         {
             this._usuarioRepositorio = usuarioRepositorio;
+            this._funcaoRepositorio = funcaoRepositorio;
             this._webHostEnvironment = webHostEnvironment;
         }
 
@@ -171,5 +173,94 @@ namespace GerenciadorCondominios.Controllers
         {
             return View(nome);
         }
+
+        public IActionResult Reprovado(string nome)
+        {
+            return View(nome);
+        }
+
+        public async Task<JsonResult> AprovarUsuario(string usuarioId)
+        {
+            Usuario usuario = await _usuarioRepositorio.PegarPeloId(usuarioId);
+            usuario.Status = StatusConta.Aprovado;
+            await _usuarioRepositorio.IncluirUsuarioEmFuncao(usuario, "Morador");
+            await _usuarioRepositorio.Atualizar(usuario);
+            return Json(true);
+        }
+
+        public async Task<JsonResult> ReprovarUsuario(string usuarioId)
+        {
+            Usuario usuario = await _usuarioRepositorio.PegarPeloId(usuarioId);
+            usuario.Status = StatusConta.Reprovado;
+            await _usuarioRepositorio.Atualizar(usuario);
+            return Json(true);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GerenciarUsuario(string usuarioId, string nome)
+        {
+            if (usuarioId == null)
+                return NotFound();
+            TempData["usuarioId"] = usuarioId;
+            ViewBag.Nome = nome;
+
+            Usuario usuario = await _usuarioRepositorio.PegarPeloId(usuarioId);
+            if (usuario == null)
+                return NotFound();
+
+            List<FuncaoUsuarioViewModel> viewModel = new List<FuncaoUsuarioViewModel>();
+
+            foreach (Funcao funcao in await _funcaoRepositorio.PegarTodos())
+            {
+                FuncaoUsuarioViewModel model = new FuncaoUsuarioViewModel
+                {
+                    FuncaoId = funcao.Id,
+                    Nome = funcao.Name,
+                    Descricao = funcao.Descricao
+                };
+
+                if(await _usuarioRepositorio.VerificarSeUsuarioEstaEmFuncao(usuario, funcao.Name))
+                {
+                    model.IsSelecionado = true;
+                }
+                else
+                {
+                    model.IsSelecionado = false;
+                }
+
+                viewModel.Add(model);
+                
+            }
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GerenciarUsuario(List<FuncaoUsuarioViewModel> model)
+        {
+            string usuarioId = TempData["usuarioId"].ToString();
+            Usuario usuario = await _usuarioRepositorio.PegarPeloId(usuarioId);
+            if (usuario == null)
+                return NotFound();
+
+            IEnumerable<string> funcoes = await _usuarioRepositorio.PegarFuncoesUsuario(usuario);
+            IdentityResult resultado = await _usuarioRepositorio.RemoverFuncoesUsuario(usuario, funcoes);
+
+            if (!resultado.Succeeded)
+            {
+                ModelState.AddModelError("", "Não foi possível atualizar as funções do usuário!");
+                return View("GerenciarUsuarios", usuarioId);
+            }
+
+            resultado = await _usuarioRepositorio.IncluirUsuarioEmFuncoes(usuario, model.Where(x => x.IsSelecionado == true).Select(x=> x.Nome));
+
+            if (!resultado.Succeeded)
+            {
+                ModelState.AddModelError("", "Não foi possível atualizar as funções do usuário!");
+                return View("GerenciarUsuarios", usuarioId);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+        
     }
 }
