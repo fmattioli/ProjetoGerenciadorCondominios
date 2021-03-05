@@ -155,3 +155,4 @@ C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1
 C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Reprovado.cshtml.g.cs
 C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Index.cshtml.g.cs
 C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\GerenciarUsuario.cshtml.g.cs
+C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\MinhasInformacoes.cshtml.g.cs
