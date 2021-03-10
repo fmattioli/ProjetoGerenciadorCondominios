@@ -108,7 +108,6 @@ namespace GerenciadorCondominios.DAL.Repositorios
             try
             {
                 await _gerenciadorUsuarios.UpdateAsync(usuario);
-                await _contexto.SaveChangesAsync();
 
             }
             catch (Exception ex )
