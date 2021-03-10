@@ -108,6 +108,8 @@ namespace GerenciadorCondominios.DAL.Repositorios
             try
             {
                 await _gerenciadorUsuarios.UpdateAsync(usuario);
+                await _contexto.SaveChangesAsync();
+
             }
             catch (Exception ex )
             {
@@ -175,6 +177,32 @@ namespace GerenciadorCondominios.DAL.Repositorios
                 return await _gerenciadorUsuarios.FindByNameAsync(usuario.Identity.Name);
             }
             catch (Exception ex )
+            {
+
+                throw ex;
+            }
+        }
+
+        public async Task<Usuario> PegarUsuarioPeloId(string id)
+        {
+            try
+            {
+                return await _gerenciadorUsuarios.FindByIdAsync(id);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public string CodificarSenha(Usuario usuario, string senha)
+        {
+            try
+            {
+                return _gerenciadorUsuarios.PasswordHasher.HashPassword(usuario, senha);
+            }
+            catch (Exception ex)
             {
 
                 throw ex;
