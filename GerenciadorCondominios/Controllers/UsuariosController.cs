@@ -319,7 +319,7 @@ namespace GerenciadorCondominios.Controllers
                 usuario.Email = viewModel.Email;
 
                 await _usuarioRepositorio.AtualizarUsuario(usuario);
-                
+                TempData["Atualizacao"] = "Registro atualizado";
 
                 if(await _usuarioRepositorio.VerificarSeUsuarioEstaEmFuncao(usuario, "Administrador") || 
                     await _usuarioRepositorio.VerificarSeUsuarioEstaEmFuncao(usuario, "Sindico"))

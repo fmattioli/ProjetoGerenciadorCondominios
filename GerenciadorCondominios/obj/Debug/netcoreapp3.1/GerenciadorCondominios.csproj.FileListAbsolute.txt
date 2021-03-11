@@ -158,3 +158,5 @@ C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1
 C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\GerenciadorCondominios.genruntimeconfig.cache
 C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Atualizar.cshtml.g.cs
 C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\RedefinirSenha.cshtml.g.cs
+C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Confirmacoes.cshtml.g.cs
+C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Veiculos\Default.cshtml.g.cs
