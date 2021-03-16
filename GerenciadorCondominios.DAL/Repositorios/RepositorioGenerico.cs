@@ -43,7 +43,7 @@ namespace GerenciadorCondominios.DAL.Repositorios
             }
         }
 
-        public async Task Exluir(int id)
+        public async Task Excluir(int id)
         {
             try
             {

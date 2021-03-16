@@ -13,7 +13,7 @@ namespace GerenciadorCondominios.DAL.Interfaces
         Task Inserir(TEntity entity);
         Task Atualizar(TEntity entity);
         Task Exluir(TEntity entity);
-        Task Exluir(int id);
+        Task Excluir(int id);
         Task Exluir(string id);
     }
 }
