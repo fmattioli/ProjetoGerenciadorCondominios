@@ -194,3 +194,6 @@ C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\bin\Debug\netcoreapp3.1
 C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Veiculos\Create.cshtml.g.cs
 C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Veiculos\Edit.cshtml.g.cs
 C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ModalExcluir.cshtml.g.cs
+C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Create.cshtml.g.cs
+C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Edit.cshtml.g.cs
+C:\BackEnd\GerenciadorCondominios\GerenciadorCondominios\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Index.cshtml.g.cs
