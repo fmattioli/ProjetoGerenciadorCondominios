@@ -1,1 +1,1 @@
-Um Gerenciador de condominios constrúido com .Net Core 3.0 usando Entity Framework e Razor pages com o front-end em materialize. 
+Project of a condominium manager built with .Net Core 3.0 using Entity Framework and Razor pages with the front-end in materialize.
